@@ -74,7 +74,7 @@ export default {
       this.thicknessPanelLeft = `${this.$refs.thickness.offsetLeft}px`;
     },
     enableEraser() {
-      document.body.style.cursor = 'url(\'../../../static/img/eraser-cursor.cur\'), auto';
+      document.body.style.cursor = 'url(\'static/img/eraser-cursor.cur\'), auto';
       this.eraserDisabled = false;
       EventBus.$emit('eraserEnabled');
     },

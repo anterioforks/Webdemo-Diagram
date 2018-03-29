@@ -9,7 +9,7 @@
 <script>
 import Control from './Control';
 import Export from './Export';
-import PenSetting from './penSettings';
+import PenSetting from './PenSettings';
 
 export default {
   name: 'navbar',
