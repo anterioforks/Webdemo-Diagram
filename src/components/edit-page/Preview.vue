@@ -1,16 +1,23 @@
 <template>
-  <svg v-if="requestedPreview && svgExport" :style="{display: displayStyle}" :width="width" :height="height" :viewBox="viewBox"
-       v-html="svgExport">
-  </svg>
+  <div>
+    <svg @click="showNotification" v-if="requestedPreview && svgExport" :style="{display: displayStyle}" :width="width" :height="height" :viewBox="viewBox" v-html="svgExport">
+    </svg>
+    <notification :notificationText="notificationText" :type="'preview'"/>
+  </div>
 </template>
 
 <script>
 import EventBus from '../../event-bus';
+import Notification from './Notification';
 
 export default {
   name: 'preview',
+  components: {
+    Notification,
+  },
   data() {
     return {
+      notificationText: 'You\'re in preview mode, please use the edit mode to modify your diagram!',
       displayStyle: '',
       width: '',
       height: '',
@@ -30,17 +37,25 @@ export default {
         this.viewBox = `0 0 ${data.clientWidth / 3.77953} ${data.clientHeight / 3.77953}`;
       }
     });
+
     EventBus.$on('preview', () => {
       this.displayStyle = 'initial';
       this.requestedPreview = true;
     });
+
     EventBus.$on('edit', () => {
       this.displayStyle = 'none';
       this.requestedPreview = false;
     });
+
     EventBus.$on('clearSvg', () => {
       this.svgExport = '';
     });
+  },
+  methods: {
+    showNotification() {
+      EventBus.$emit('showNotification', 'preview');
+    },
   },
 };
 </script>

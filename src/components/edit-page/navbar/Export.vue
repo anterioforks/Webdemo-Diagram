@@ -14,16 +14,22 @@
       <img src="../../../../static/img/powerpoint.svg">
       <span>Save</span>
     </div>
+    <notification :notificationText="notificationText" :type="'save'"/>
   </div>
 </template>
 
 <script>
 import EventBus from '../../../event-bus';
+import Notification from '../Notification';
 
 export default {
   name: 'export',
+  components: {
+    Notification,
+  },
   data() {
     return {
+      notificationText: 'You may want to add some content before saving to a file.',
       editMode: true,
     };
   },

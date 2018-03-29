@@ -124,6 +124,8 @@ export default {
       } else if (this.editor.model.rawStrokes.length > 0) {
         this.editor.export_();
         this.saveRequested = true;
+      } else {
+        EventBus.$emit('showNotification', 'save');
       }
     });
 
