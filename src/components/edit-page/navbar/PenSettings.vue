@@ -89,6 +89,12 @@ export default {
 
 <style scoped>
 
+  @media only screen and (max-width : 580px) {
+      .nav-group {
+      width: 100%;
+    }
+  }
+
   .eraserEnabled {
     border-bottom: #1A9FFF 2px solid;
   }

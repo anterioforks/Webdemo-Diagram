@@ -1,6 +1,5 @@
 <template>
-  <div :style="{display: displayStyle}" class="editor" @pointerdown.stop.prevent="pointerDown" @loaded="loaded" @changed="changed($event)" @exported="exported($event)"
-       ref="editor"></div>
+  <div :style="{display: displayStyle}" class="editor" @pointerdown.stop.prevent="pointerDown" @loaded="loaded" @changed="changed($event)" @exported="exported($event)" touch-action="none" ref="editor"></div>
 </template>
 
 <script>

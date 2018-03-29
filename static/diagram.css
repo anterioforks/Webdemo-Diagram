@@ -88,6 +88,7 @@ div.nav-group:nth-child(3) {
 }
 
 .colors {
+    -webkit-overflow-scrolling: touch;
     flex: 1;
     display: flex;
     overflow: auto;
