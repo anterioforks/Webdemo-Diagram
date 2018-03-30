@@ -94,7 +94,7 @@ export default {
 <style scoped>
 
   @media only screen and (max-width : 580px) {
-      .nav-group {
+    .nav-group {
       width: 100%;
     }
   }

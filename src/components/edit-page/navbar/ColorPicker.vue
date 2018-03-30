@@ -67,7 +67,14 @@ export default {
     }
   }
 
-    .picker {
+  @media only screen and (max-width : 580px) {
+    .pensettings {
+      display: none;
+    }
+  }
+
+
+  .picker {
     z-index: 40;
     width: 245px;
     position: absolute;
