@@ -95,6 +95,7 @@ export default {
 
     EventBus.$on('clear', () => {
       this.editor.clear();
+      EventBus.$emit('clearSvg');
     });
     EventBus.$on('undo', () => {
       this.editor.undo();
