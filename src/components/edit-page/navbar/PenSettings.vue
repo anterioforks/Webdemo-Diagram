@@ -71,7 +71,11 @@ export default {
   methods: {
     showThicknessPanel() {
       this.displayThicknessPanel = true;
-      this.thicknessPanelLeft = `${this.$refs.thickness.offsetLeft}px`;
+      if (window.innerWidth > 430) {
+        this.thicknessPanelLeft = `${this.$refs.thickness.offsetLeft}px`;
+      } else {
+        this.thicknessPanelLeft = '12px';
+      }
     },
     enableEraser() {
       document.body.style.cursor = 'url(\'static/img/eraser-cursor.cur\'), auto';

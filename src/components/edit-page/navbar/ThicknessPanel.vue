@@ -53,8 +53,19 @@ export default {
 
 <style scoped>
 
+  @media screen and (max-width: 430px) {
+    .notification {
+      right: 12px;
+      top: 96px;
+    }
+  }
+
+  @media screen and (min-width: 430px) {
+    .notification {
+      top: 56px;
+    }
+  }
   .notification {
-    top: 56px;
     display: initial;
   }
 

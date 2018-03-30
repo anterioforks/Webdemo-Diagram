@@ -61,7 +61,13 @@ export default {
 
 <style scoped>
 
-  .picker {
+  @media screen and (max-width: 980px) {
+    .picker {
+      right: 12px;
+    }
+  }
+
+    .picker {
     z-index: 40;
     width: 245px;
     position: absolute;

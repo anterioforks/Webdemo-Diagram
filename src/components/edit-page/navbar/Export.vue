@@ -51,4 +51,9 @@ export default {
 
 <style scoped>
 
+  .classic-btn {
+    margin-left: 0;
+    margin-right: 12px;
+  }
+
 </style>
