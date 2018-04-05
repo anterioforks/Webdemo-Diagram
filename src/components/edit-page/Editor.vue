@@ -1,5 +1,5 @@
 <template>
-  <div :style="{display: displayStyle}" class="editor" @pointerdown.stop.prevent="pointerDown" @loaded="loaded" @changed="changed($event)" @exported="exported($event)" touch-action="none" ref="editor"></div>
+  <div :style="{display: displayStyle}" class="editor" @pointerdown="pointerDown" @loaded="loaded" @changed="changed($event)" @exported="exported($event)" touch-action="none" ref="editor"></div>
 </template>
 
 <script>
@@ -133,16 +133,20 @@ export default {
       this.pointerType = 'ERASER';
       this.editor.pointerType = 'ERASER';
     });
+
     EventBus.$on('eraserDisabled', () => {
       this.pointerType = 'PEN';
       this.editor.pointerType = 'PEN';
     });
+
     EventBus.$on('colorChanged', (color) => {
       this.updateColor(color);
     });
+
     EventBus.$on('customColorChanged', (color) => {
       this.updateColor(color);
     });
+
     EventBus.$on('thicknessUpdated', (data) => {
       this.currentThickness = data.value;
       this.editor.penStyle = {

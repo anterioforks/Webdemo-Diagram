@@ -14,9 +14,7 @@
     </div>
     <thickness-panel id="thickness-panel" v-show="displayThicknessPanel" :style="{ left: thicknessPanelLeft }"/>
     <div class="colors">
-      <template v-for="color in colors">
-        <pen-color :color="color" :checked="color === '#000000'" :key="color"/>
-      </template>
+      <pen-color v-for="color in colors" :color="color" :checked="color === '#000000'" :key="color"/>
       <color-picker/>
     </div>
   </div>
