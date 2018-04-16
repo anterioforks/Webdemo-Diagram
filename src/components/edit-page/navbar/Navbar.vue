@@ -41,6 +41,6 @@ export default {
 
   div.nav-group:nth-child(3) {
     width: 270px;
-    justify-content: end;
+    justify-content: flex-end;
   }
 </style>

@@ -119,8 +119,14 @@ export default {
 
     EventBus.$on('save', () => {
       if (this.exports && this.exports.pptx) {
-        const blob = new Blob([this.exports.pptx], { type: 'application/vnd.openxmlformats-officedocument.presentationml.presentation' });
-        FileSaver.saveAs(blob, 'myscript-diagram.pptx');
+        const iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+        if (iOS) {
+          const blob = new Blob([this.exports.pptx]);
+          FileSaver.saveAs(blob, 'myscript-diagram.pptx');
+        } else {
+          const blob = new Blob([this.exports.pptx], { type: 'application/vnd.openxmlformats-officedocument.presentationml.presentation' });
+          FileSaver.saveAs(blob, 'myscript-diagram.pptx');
+        }
       } else if (this.editor.model.rawStrokes.length > 0) {
         this.editor.export_();
         this.saveRequested = true;
