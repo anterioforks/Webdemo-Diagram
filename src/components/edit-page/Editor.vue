@@ -48,8 +48,8 @@ export default {
         clientWidth: this.clientWidth,
         clientHeight: this.clientHeight,
       });
-      if (this.exports && this.exports.pptx && this.saveRequested) {
-        const blob = new Blob([this.exports.pptx], { type: 'application/vnd.openxmlformats-officedocument.presentationml.presentation' });
+      if (this.exports && this.exports['application/vnd.openxmlformats-officedocument.presentationml.presentation'] && this.saveRequested) {
+        const blob = new Blob([this.exports['application/vnd.openxmlformats-officedocument.presentationml.presentation']], { type: 'application/vnd.openxmlformats-officedocument.presentationml.presentation' });
         FileSaver.saveAs(blob, 'myscript-diagram.pptx');
         this.saveRequested = false;
       }
@@ -118,13 +118,13 @@ export default {
     });
 
     EventBus.$on('save', () => {
-      if (this.exports && this.exports.pptx) {
+      if (this.exports && this.exports['application/vnd.openxmlformats-officedocument.presentationml.presentation']) {
         const iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
         if (iOS) {
-          const blob = new Blob([this.exports.pptx]);
+          const blob = new Blob([this.exports['application/vnd.openxmlformats-officedocument.presentationml.presentation']]);
           FileSaver.saveAs(blob, 'myscript-diagram.pptx');
         } else {
-          const blob = new Blob([this.exports.pptx], { type: 'application/vnd.openxmlformats-officedocument.presentationml.presentation' });
+          const blob = new Blob([this.exports['application/vnd.openxmlformats-officedocument.presentationml.presentation']], { type: 'application/vnd.openxmlformats-officedocument.presentationml.presentation' });
           FileSaver.saveAs(blob, 'myscript-diagram.pptx');
         }
       } else if (this.editor.model.rawStrokes.length > 0) {

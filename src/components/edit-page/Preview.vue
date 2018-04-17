@@ -28,9 +28,9 @@ export default {
   },
   mounted() {
     EventBus.$on('exported', (data) => {
-      if (data.exports && data.exports.svg) {
+      if (data.exports && data.exports['image/svg+xml']) {
         const divSvgElement = document.createElement('div');
-        divSvgElement.innerHTML = data.exports.svg.trim();
+        divSvgElement.innerHTML = data.exports['image/svg+xml'].trim();
         this.svgExport = divSvgElement.firstChild.innerHTML;
         this.width = data.clientWidth;
         this.height = data.clientHeight;
