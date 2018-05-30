@@ -1,12 +1,12 @@
 <template>
   <div class="nav-group">
-    <button @click="clear" id="clear" class="nav-btn btn-fab-mini btn-lightBlue" :disabled="!canClear">
+    <button @click="clear" id="clear" class="nav-btn btn-fab-mini btn-lightBlue" :disabled="!canClear || preview">
       <img src="../../../../static/img/clear.svg">
     </button>
-    <button @click="undo" id="undo" class="nav-btn btn-fab-mini btn-lightBlue" :disabled="!canUndo">
+    <button @click="undo" id="undo" class="nav-btn btn-fab-mini btn-lightBlue" :disabled="!canUndo || preview">
       <img src="../../../../static/img/undo.svg">
     </button>
-    <button @click="redo" id="redo" class="nav-btn btn-fab-mini btn-lightBlue" :disabled="!canRedo">
+    <button @click="redo" id="redo" class="nav-btn btn-fab-mini btn-lightBlue" :disabled="!canRedo || preview">
       <img src="../../../../static/img/redo.svg">
     </button>
   </div>
@@ -22,6 +22,7 @@ export default {
       canUndo: false,
       canRedo: false,
       canClear: false,
+      preview: false,
     };
   },
   mounted() {
@@ -29,6 +30,12 @@ export default {
       this.canUndo = data.event.detail.canUndo;
       this.canRedo = data.event.detail.canRedo;
       this.canClear = data.canClear;
+    });
+    EventBus.$on('preview', () => {
+      this.preview = true;
+    });
+    EventBus.$on('edit', () => {
+      this.preview = false;
     });
   },
   methods: {
